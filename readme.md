@@ -1,0 +1,1 @@
+This tools is usefull for comapring 2 xlsx files.
