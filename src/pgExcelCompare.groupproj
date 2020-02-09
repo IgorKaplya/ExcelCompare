@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3A949ED3-4D79-446C-9EFA-ABF8A622A15D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ExcelCompare.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\ExcelCompareTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ExcelCompare">
+        <MSBuild Projects="ExcelCompare.dproj"/>
+    </Target>
+    <Target Name="ExcelCompare:Clean">
+        <MSBuild Projects="ExcelCompare.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExcelCompare:Make">
+        <MSBuild Projects="ExcelCompare.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ExcelCompareTests">
+        <MSBuild Projects="Test\ExcelCompareTests.dproj"/>
+    </Target>
+    <Target Name="ExcelCompareTests:Clean">
+        <MSBuild Projects="Test\ExcelCompareTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExcelCompareTests:Make">
+        <MSBuild Projects="Test\ExcelCompareTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ExcelCompare;ExcelCompareTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ExcelCompare:Clean;ExcelCompareTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ExcelCompare:Make;ExcelCompareTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
