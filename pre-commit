@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Checking a commit doesn't include "todo"
+# Checking commit doesn't include "todo"
 for FILE in `git diff --name-only --cached`; do
     grep -i 'TODO' $FILE 2>&1 >/dev/null
     if [ $? -eq 0 ]; then
@@ -10,8 +10,7 @@ for FILE in `git diff --name-only --cached`; do
 done
 
 # running unit test before commit
-cd /d/delphi/ceac/_files/
-/d/delphi/ceac/_files/test_pro.bat
+"`dirname $0`"/../../test.bat
 if [ $? -eq 0 ]; then
   echo "TestPassed"
  else
